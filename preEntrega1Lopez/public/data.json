@@ -1,0 +1,20 @@
+[
+    {
+        "id":1,
+        "name": "Prote",
+        "price": 250.000,
+        "img": "../src/images/Proteina Iso.png"
+    },
+    {
+        "id":2,
+        "name": "Preentreno",
+        "price": 140.000,
+        "img": "../src/images/Preentreno.png"
+    },
+    {
+        "id":3,
+        "name": "Termos",
+        "price": 60.000,
+        "img": "../src/images/Termos.png"
+    }
+]
