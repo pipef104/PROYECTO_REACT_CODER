@@ -5,10 +5,9 @@ export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   //Cart State
-  const [cart, setCart] = useState([]); 
+  const [cart, setCart] = useState([]);
   // add to cart
   const addToCart = (product, id) => {
-    console.log('Carro agregado');
     const newItem = { ...product, amount: 1 };
     // check if the item is already in the cart
     const cartItem = cart.find((item) => {
@@ -28,9 +27,11 @@ const CartProvider = ({ children }) => {
       setCart([...cart, newItem]);
     }
   };
-  console.log(cart);
+
   return (
-    <CartContext.Provider value={addToCart}>{children}</CartContext.Provider>
+    <CartContext.Provider value={(cart, addToCart)}>
+      {children}
+    </CartContext.Provider>
   );
 };
 
