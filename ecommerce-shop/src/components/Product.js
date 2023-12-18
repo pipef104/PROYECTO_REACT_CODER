@@ -7,7 +7,7 @@ import { BsPlus, BsEyeFill } from "react-icons/bs";
 import { CartContext } from "../contexts/CartContext";
 
 const Product = ({ product }) => {
-  const  addToCart  = useContext(CartContext);
+  const  { addToCart } = useContext(CartContext);
   //Destructure product
   const { id, image, category, title, price } = product;
   return (
