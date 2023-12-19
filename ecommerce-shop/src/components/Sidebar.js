@@ -34,7 +34,7 @@ const Sidebar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return <div>Cart Item</div>;
+          return <CartItem item={item} key={item.id}/>;
         })}
       </div>
     </div>
