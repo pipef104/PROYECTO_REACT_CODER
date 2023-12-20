@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Link } from "react-router-dom";
 import { IoMdClose, IoMdRemove, IoMdAdd } from "react-icons/io";
 
+import { CartContext } from "../contexts/CartContext";
+
 const CartItem = ({ item }) => {
+  const {removeFromCart} = useContext(CartContext);
   //Destructure item
   const { id, title, image, price, amount } = item;
   return (
@@ -14,7 +17,7 @@ const CartItem = ({ item }) => {
       >
         {/**IMAGE */}
         <Link to={`/prouct/${id}`}>
-          <img className="max-w-{80px}" src={image} alt="" />
+          <img className="max-w-[80px]" src={image} alt="" />
         </Link>
         <div className="w-full flex flex-col">
           {/** Title & remove icon */}
@@ -27,7 +30,7 @@ const CartItem = ({ item }) => {
               {title}
             </Link>
             {/**remove icon */}
-            <div className="text-xl cursor-pointer">
+            <div onClick={()=> removeFromCart(id)} className="text-xl cursor-pointer">
               <IoMdClose className="text-gray-500 hover:text-red-500 transition" />
             </div>
           </div>
@@ -40,7 +43,7 @@ const CartItem = ({ item }) => {
               {/**amount */}
               <div className="">{amount}</div>
               {/**plus icon  */}
-              <div className="flex-1 h-full flex justify-center item-center cursor-pointer">
+              <div className="flex-1 flex justify-center item-center cursor-pointer">
                 <IoMdAdd />
               </div>
             </div>

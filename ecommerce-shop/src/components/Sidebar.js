@@ -10,11 +10,11 @@ import CartItem from "../components/CartItem";
 //import sidebar context
 import { SidebarContext } from "../contexts/SidebarContext";
 // import cart context
-import  { CartContext }  from "../contexts/CartContext";
+import { CartContext } from "../contexts/CartContext";
 
 const Sidebar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
   return (
     <div
       className={`${
@@ -34,8 +34,20 @@ const Sidebar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return <CartItem item={item} key={item.id}/>;
+          return <CartItem item={item} key={item.id} />;
         })}
+      </div>
+      <div>
+        <div className="bg-pink-200 flex w-full justify-between items-center">
+          {/**Total */}
+          <div>
+            <span>Total:</span>$ 1000
+          </div>
+          {/**clear cart icon */}
+          <div onClick={clearCart} className="cursor-pointer py-4 bg-pink-500 text-white w-12 h-12 flex justify-center items-center text-xl">
+            <FiTrash2 />
+          </div>
+        </div>
       </div>
     </div>
   );
