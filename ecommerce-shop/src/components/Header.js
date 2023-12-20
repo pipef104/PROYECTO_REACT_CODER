@@ -8,24 +8,29 @@ import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import logo from "../img/logo.svg";
 const Header = () => {
-  const [isActive, setIsActive] = useState(false)
+  const [isActive, setIsActive] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
   //event listener
-  useEffect(()=>{
-    window.addEventListener('scroll', ()=>{
-      window.scrollY > 60 ? setIsActive(true) : setIsActive(false)
-    })
-  })
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
+    });
+  });
   return (
-    <header className={`${isActive? 'bg-white py-4 shadow-md' : 'bg-none py-6'} fixed w-full z-10 transition-all`}>
+    <header
+      className={`${
+        isActive ? "bg-white py-4 shadow-md" : "bg-none py-6"
+      } fixed w-full z-10 transition-all`}
+    >
       <div className="container mx-auto flex items-center justify-between h-full ">
         {/** Logo*/}
-        <Link to={"/"}></Link>
-        <div>
-          <img className="w-[40px]" src={logo} alt="" />
-        </div>
+        <Link to="/">
+          <div>
+            <img className="w-[40px]" src={logo} alt="" />
+          </div>
+        </Link>
         {/** cart */}
         <div
           onClick={() => setIsOpen(!isOpen)}
